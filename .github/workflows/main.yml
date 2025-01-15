@@ -10,6 +10,7 @@ env:
   ISSUE_BODY: ${{ github.event.issue.body }}
   ISSUE_ASSIGNEES: ${{ join(github.event.issue.assignees.*.login, ', ') }}
   ISSUE_LABELS: ${{ join(github.event.issue.labels.*.name, ', ') }}
+  ISSUE_RESPONSE: $(curl -s https://api.github.com/repos/${{ github.repository }}/issues/$ISSUE_NUMBER)
 jobs:
   access_issue_info:
     runs-on: ubuntu-latest
@@ -23,3 +24,4 @@ jobs:
           echo "Issue Body: ${ISSUE_BODY}"
           echo "Issue Assignees: ${ISSUE_ASSIGNEES}"
           echo "Issue Labels: ${ISSUE_LABELS}"
+          echo "Issue Information: $ISSUE_RESPONSE"
