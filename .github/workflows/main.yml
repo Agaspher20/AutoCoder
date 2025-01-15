@@ -10,7 +10,7 @@ env:
   ISSUE_BODY: ${{ github.event.issue.body }}
   ISSUE_ASSIGNEES: ${{ join(github.event.issue.assignees.*.login, ', ') }}
   ISSUE_LABELS: ${{ join(github.event.issue.labels.*.name, ', ') }}
-  ISSUE_URL: https://api.github.com/repos/${{ github.repository }}/issues/$ISSUE_NUMBER
+  ISSUE_URL: https://api.github.com/repos/${{ github.repository }}/issues/${{ ISSUE_NUMBER }}
 jobs:
   access_issue_info:
     runs-on: ubuntu-latest
